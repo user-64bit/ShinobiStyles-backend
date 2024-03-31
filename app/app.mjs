@@ -4,6 +4,7 @@ import posts from "./routes/posts.mjs";
 import { config } from "dotenv";
 import Razorpay from "razorpay";
 import paymentRoute from "./routes/payment.mjs";
+import product from "./routes/product.mjs";
 config({ path: ".env" });
 
 const PORT = 3001;
@@ -14,7 +15,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/", posts);
 app.use("/api", paymentRoute);
-
+app.use("/", paymentRoute);
+app.use("/", product);
 app.get("/api/getkey", (req, res) => {
     res.status(200).json({ key: "rzp_test_rzJxEUddPf0TWa" });
 });
