@@ -3,13 +3,14 @@ import crypto from "crypto";
 
 export const checkout = async (req, res) => {
     const options = {
-        amount: Number(req.body.amount * 100),
+        amount: Number(req.body.billed_amount * 100),
         currency: "INR",
     };
-    const order = await instance.orders.create(options);
+    const response = await instance.orders.create(options);
     res.status(200).json({
-        success: true,
-        order,
+        order_id: response.id,
+        currency: response.currency,
+        amount: response.amount,
     });
 };
 
