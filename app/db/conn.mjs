@@ -1,7 +1,7 @@
 import { MongoClient } from "mongodb";
 
-const USERNAME = "user64bit";
-const PASSWORD = "UXnc7boDzMz3HSjt";
+const USERNAME = process.env.MONGO_DB_USERNAME;
+const PASSWORD = process.env.MONGO_DB_PASSWORD;
 const connectionString = `mongodb+srv://${USERNAME}:${PASSWORD}@ss-main.bvztuon.mongodb.net/?retryWrites=true&w=majority`;
 
 const client = new MongoClient(connectionString);
